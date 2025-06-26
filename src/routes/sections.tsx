@@ -18,6 +18,8 @@ export const UserPage = lazy(() => import('src/pages/user'));
 export const SignInPage = lazy(() => import('src/pages/sign-in'));
 export const VocabularyPage = lazy(() => import('src/pages/vocabulary/vocabulary-list'));
 export const VocabularyDetailPage = lazy(() => import('src/pages/vocabulary/vocabulary-detail'));
+export const NumberPage = lazy(() => import('src/pages/number/number-list'));
+export const NumberDetailPage = lazy(() => import('src/pages/number/number-detail'));
 
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 
@@ -71,6 +73,27 @@ export const routesSection: RouteObject[] = [
             path: 'vocabulary-detail/:id',
             element: (
                 <VocabularyDetailPage />
+            ),
+          },
+        ],
+      },
+      {
+        path: 'number',
+        children: [
+          {
+            index: true,
+            element: <Navigate to='number-list' replace />,
+          },
+          {
+            path: 'number-list',
+            element: (
+            <NumberPage />
+            ),
+          },
+          {
+            path: 'number-detail/:id',
+            element: (
+                <NumberDetailPage />
             ),
           },
         ],

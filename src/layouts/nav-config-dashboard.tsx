@@ -19,7 +19,12 @@ export const navData = [
   },
   {
     title: 'Từ vựng',
-    path: '/vocabulary-list',
+    path: '/vocabulary',
     icon: icon('ic-cart'),
+  },
+    {
+    title: 'Số đếm',
+    path: '/number',
+    icon: icon('ic-blog'),
   },
 ];
