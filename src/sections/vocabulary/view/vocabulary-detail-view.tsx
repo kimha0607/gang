@@ -165,6 +165,7 @@ export const VocabularyDetailView = () => {
                 <Grid size={{  xs: 12, sm: 6,  md: 6,  }} key={choice}>
                   <Button
                     fullWidth
+                    sx={{ py: 1 }}
                     variant={selected === choice ? 'contained' : 'outlined'}
                     color={choice === questionData.answer && selected ? 'success' : 'primary'}
                     onClick={() => handleSelect(choice)}

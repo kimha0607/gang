@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import {
   Box,
@@ -13,56 +14,25 @@ import {
   FormControl,
 } from '@mui/material';
 
+import { useRouter } from 'src/routes/hooks';
+
+import { getRandomInt, generateOptions, numberToSinoKorean, numberToNativeKorean } from 'src/utils/helpers';
+
 import { DashboardContent } from 'src/layouts/dashboard';
 
-const numberToSinoKorean = (num: number): string => {
-  if (num === 0) return '영';
-  const digits = ['', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
-  const units = ['', '십', '백', '천'];
-  const bigUnits = ['', '만', '억'];
-
-  let result = '';
-  let bigUnitIndex = 0;
-
-  while (num > 0) {
-    const chunk = num % 10000;
-    if (chunk > 0) {
-      let chunkStr = '';
-      const chunkStrArr = String(chunk).padStart(4, '0').split('').map(Number);
-      chunkStrArr.forEach((digit, i) => {
-        if (digit !== 0) {
-          chunkStr += (digit === 1 && i !== 3 ? '' : digits[digit]) + units[3 - i];
-        }
-      });
-      result = chunkStr + bigUnits[bigUnitIndex] + result;
-    }
-    num = Math.floor(num / 10000);
-    bigUnitIndex++;
-  }
-
-  return result;
-};
-
-const getRandomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-const generateOptions = (correct: number, min: number, max: number) => {
-  const options = new Set([correct]);
-  while (options.size < 4) {
-    const rand = getRandomInt(min, max);
-    if (rand !== correct) options.add(rand);
-  }
-  return Array.from(options).sort(() => 0.5 - Math.random());
-};
-
 export function NumberDetailView() {
-  const limits = [0, 10, 100, 1000, 10000, 100000, 1000000];
-
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(100);
+  const [maxValue, setMaxValue] = useState(10);
   const [question, setQuestion] = useState<number | null>(null);
   const [options, setOptions] = useState<number[]>([]);
   const [feedback, setFeedback] = useState('');
   const [error, setError] = useState('');
+
+
+  const router = useRouter();
+  const { id } = useParams();
+
+  const limits = id === 'native_korean_number' ?  [0, 10, 40] : [0, 10, 100, 1000, 10000, 100000, 100000];
 
   const generateQuestion = () => {
     if (minValue === maxValue) {
@@ -80,10 +50,6 @@ export function NumberDetailView() {
     setError('');
   };
 
-  useEffect(() => {
-    generateQuestion();
-  }, [minValue, maxValue]);
-
   const handleAnswer = (selected: number) => {
     if (selected === question) {
       setFeedback('✅ Chính xác!');
@@ -92,8 +58,22 @@ export function NumberDetailView() {
     }
   };
 
+  useEffect(() => {
+    generateQuestion();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [minValue, maxValue]);
+
   return (
     <DashboardContent>
+      <Box sx={{ mb: 2 }}>
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={() => router.back()}
+        >
+          Trở lại
+        </Button>
+      </Box>
       <Card sx={{ p: 3, mb: 5 }}>
 
 
@@ -143,16 +123,19 @@ export function NumberDetailView() {
           {error}
         </Alert>
       )}
-      <Grid size={{  xs: 12, sm: 6,  md: 6,  }} container spacing={2}>
+      <Grid container spacing={2}>
         {options.map((num) => (
-          <Button
-            key={num}
-            variant="outlined"
-            onClick={() => handleAnswer(num)}
-            sx={{ minWidth: 100, fontSize: '1.2rem' }}
-          >
-            {numberToSinoKorean(num)}
-          </Button>
+          <Grid size={{  xs: 12, sm: 6,  md: 6,  }} container spacing={2}>
+            <Button
+              fullWidth
+              sx={{ py: 1 }}
+              key={num}
+              variant="outlined"
+              onClick={() => handleAnswer(num)}
+            >
+              {id === 'native_korean_number' ? numberToNativeKorean(num) : numberToSinoKorean(num)}
+            </Button> 
+          </Grid>
         ))}
       </Grid>
 

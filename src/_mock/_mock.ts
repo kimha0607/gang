@@ -374,7 +374,7 @@ export const _topic_vocab_list = [
       { kr: '주말', vi: 'Cuối tuần' },
     ],
   },
-    {
+  {
     id: 'month',
     kr: '월',
     vi: 'Tháng',
@@ -393,6 +393,43 @@ export const _topic_vocab_list = [
       { kr: '12월', vi: 'Tháng 12' },
     ],
   },
+  {
+  id: 'time',
+  kr: '시간',
+  vi: 'Thời gian',
+  vocabulary: [
+    { kr: '오전', vi: 'Buổi sáng' },
+    { kr: '오후', vi: 'Buổi chiều' },
+    { kr: '낮', vi: 'Ban ngày' },
+    { kr: '밤', vi: 'Ban đêm' },  
+    { kr: '아침', vi: 'Sáng' },
+    { kr: '점심', vi: 'Trưa' },
+    { kr: '저녁', vi: 'Tối' },
+    { kr: '새벽', vi: 'Sáng sớm' },
+  ],
+  },
+  {
+  id: 'daily-verbs',
+  kr: '일상표현동사',
+  vi: 'Động từ chỉ hoạt động hàng ngày',
+  vocabulary: [
+    { kr: '일어나다', vi: 'Thức dậy' },
+    { kr: '이를 닦다', vi: 'Đánh răng' },
+    { kr: '세수하다', vi: 'Rửa mặt' },
+    { kr: '읽다', vi: 'Đọc' },
+    { kr: '보다', vi: 'Nhìn, xem' },
+    { kr: '다니다', vi: 'Đi lại (có tính thường xuyên)' },
+    { kr: '배우다', vi: 'Học' },
+    { kr: '숙제하다', vi: 'Làm bài tập' },
+    { kr: '청소하다', vi: 'Dọn vệ sinh' },
+    { kr: '목욕하다', vi: 'Tắm' },
+    { kr: '출근하다', vi: 'Đi làm' },
+    { kr: '퇴근하다', vi: 'Tan tầm' },
+    { kr: '시작하다', vi: 'Bắt đầu' },
+    { kr: '끝나다', vi: 'Xong, kết thúc' },
+    { kr: '자다', vi: 'Ngủ' },
+  ],
+}
 ];
 
 export const _number_list = [
