@@ -705,5 +705,29 @@ export const _topic_vocab_list = [
       { kr: "편리하다", vi: "Tiện lợi" },
       { kr: "편하다", vi: "Thoải mái" }
     ]
-  }
+  },
+  {
+  id: "010",
+  kr: "Bài 10",
+  vi: "Từ vựng trong bếp",
+  vocabulary: [
+    { kr: "주방", vi: "Nhà bếp" },
+    { kr: "설거지", vi: "Rửa bát" },
+    { kr: "냄비", vi: "Nồi" },
+    { kr: "프라이팬", vi: "Chảo" },
+    { kr: "칼", vi: "Dao" },
+    { kr: "도마", vi: "Thớt" },
+    { kr: "접시", vi: "Đĩa" },
+    { kr: "그릇", vi: "Bát / tô" },
+    { kr: "숟가락", vi: "Thìa" },
+    { kr: "젓가락", vi: "Đũa" },
+    { kr: "냉장고", vi: "Tủ lạnh" },
+    { kr: "전자레인지", vi: "Lò vi sóng" },
+    { kr: "가스레인지", vi: "Bếp ga" },
+    { kr: "자르다", vi: "Cắt" },
+    { kr: "볶다", vi: "Xào" },
+    { kr: "굽다", vi: "Nướng / rán" },
+    { kr: "끓이다", vi: "Đun sôi" }
+  ]
+}
 ];
